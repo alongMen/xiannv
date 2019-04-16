@@ -4,6 +4,7 @@
 		<meta charset="utf-8" />
 		<title>垚垚小仙女</title>
 		<link rel="stylesheet" href="css/index.css" />
+		<script src="https://cdn.bootcss.com/jquery/3.4.0/jquery.min.js"></script>
 	</head>
 	<body>
 		<!--/*外层最大容器*/-->
@@ -61,8 +62,28 @@
 			<div class="item">红脸如开莲,-----------</div>
 			<div class="item"><span style="color:fuchsia"> ❥ ❥ ❥</span>素肤若凝脂。</div>
 		</a>
-		<audio autoplay >
-			<source  src="./music/1.mp3" loop="loop" style="display:none; height: 0">
+		<audio controls="controls"  autoplay id="music1" preload id="music1" hidden>
+			<source  src="music/1.mp3" loop="loop">
 		</audio>
 	</body>
+	<script>
+		var audio = document.getElementById('music1');
+		$(".wrap").bind("touchstart", function bf() {
+		
+		if(audio !== null) {
+		//检测播放是否已暂停.audio.paused 在播放器播放时返回false.
+		//alert(audio.paused);
+		if(audio.paused) {
+		audio.play(); //audio.play();// 这个就是播放
+		$("#btn").addClass("active")
+		} else {
+		audio.pause(); // 这个就是暂停
+		$("#btn").removeClass("active")
+		}
+		}
+		});
+		$("html").one('touchstart',function(){
+			audio.play();
+		})
+	</script>
 </html>
